@@ -1,0 +1,8 @@
+.env
+__pycache__/
+*.pyc
+*.db
+.DS_Store
+.env
+start_env.py
+start_env.sh
