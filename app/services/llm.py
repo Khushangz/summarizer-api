@@ -5,8 +5,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-client = Groq(api_key=os.getenv("GROQ_API_KEY"))
-
 SYSTEM_PROMPT = """You are a summarization engine. Given text, return ONLY a valid JSON object with exactly this structure:
 {
   "summary": "2-3 sentence summary of the text",
@@ -16,6 +14,7 @@ SYSTEM_PROMPT = """You are a summarization engine. Given text, return ONLY a val
 No explanation. No markdown. No code blocks. Only the raw JSON object."""
 
 def get_summary(text: str) -> dict:
+    client = Groq(api_key=os.getenv("GROQ_API_KEY"))
     response = client.chat.completions.create(
         model="llama-3.1-8b-instant",
         messages=[
